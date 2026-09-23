@@ -71,7 +71,7 @@ signature_test = rule(
         "spx_domain": attr.string(
             default = "",
             values = ["", "Pure", "PrehashedSha256"],
-            doc = "The SPHINCS+ / SLH-DSA domain to use for signing.",
+            doc = "The SPHINCS+ / SLH-DSA signature mode to use for signing.",
         ),
         "_script": attr.label(
             default = "//signing:signature_test.template.sh",

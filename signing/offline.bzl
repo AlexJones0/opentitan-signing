@@ -74,7 +74,7 @@ offline_presigning_artifacts = rule(
         "spx_key": attr.label_keyed_string_dict(
             providers = [[KeySetInfo], [DefaultInfo]],
             allow_files = True,
-            doc = "SPX public key to validate this image",
+            doc = "SPHINCS+ / SLH-DSA public key to validate this image",
         ),
     },
     toolchains = [
@@ -241,7 +241,7 @@ offline_signature_attach = rule(
         "srcs": attr.label_list(allow_files = True, providers = [[PreSigningBinaryInfo], [DefaultInfo]], doc = "Binary files to sign"),
         "ecdsa_signatures": attr.label_list(allow_files = True, doc = "ECDSA signed digest files"),
         "rsa_signatures": attr.label_list(allow_files = True, doc = "RSA signed digest files"),
-        "spx_signatures": attr.label_list(allow_files = True, doc = "SPX+ signed digest files"),
+        "spx_signatures": attr.label_list(allow_files = True, doc = "SPHINCS+ / SLH-DSA signed digest files"),
     },
     toolchains = [
         OPENTITANTOOL_TOOLCHAIN,
