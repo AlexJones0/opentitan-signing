@@ -258,7 +258,7 @@ _SPX_TESTS = {
             "//hsmtool",
             "//signing/softhsm",
             "//signing/softhsm:conf",
-            "@opentitan_devbundle//:fake_keys/app_prod_spx.pem",
+            "@opentitan_devbundle//:fake_keys/app_prod_spx.pub.pem",
             "@opentitan_devbundle//:opentitantool/opentitantool",
             "@softhsm2//:gen_dir",
         ],
@@ -270,7 +270,7 @@ _SPX_TESTS = {
                 --rcfile=
                 spx verify {rev_flag}
                     --domain={domain}
-                    $(rootpath @opentitan_devbundle//:fake_keys/app_prod_spx.pem)
+                    $(rootpath @opentitan_devbundle//:fake_keys/app_prod_spx.pub.pem)
                     $(rootpath :tqbf_digest)
                     tqbf.spx_sig
             """.format(
