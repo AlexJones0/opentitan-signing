@@ -77,4 +77,7 @@ rust_library(
 rust_test(
     name = "sphincsplus_test",
     crate = ":sphincsplus",
+    deps = [
+        "@rust_opentitan_signing_crates//:hex",
+    ],
 )
