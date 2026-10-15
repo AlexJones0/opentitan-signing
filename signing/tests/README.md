@@ -9,7 +9,7 @@ This requires some signed artifacts to be checked in, where these artifacts may 
 As such, these artifacts may need to be updated across devbundle release bumps to keep these tests passing.
 
 To generate these artifacts, you can follow the below steps.
-These steps still worked as of commit [`0135da5e167491a7709d972789278acd2f4cec4e`](https://github.com/lowRISC/opentitan/commit/0135da5e167491a7709d972789278acd2f4cec4e) on `OpenTitan/earlgrey_1.0.0`.
+These steps still worked as of commit [`f55b9a296da51ec62a0d7d883ec36340e54d8ddf`](https://github.com/lowRISC/opentitan/commit/f55b9a296da51ec62a0d7d883ec36340e54d8ddf) on `OpenTitan/earlgrey_1.0.0`.
 
 1. Checkout the OpenTitan commit from which the devbundle release was made.
 
@@ -75,8 +75,8 @@ These steps still worked as of commit [`0135da5e167491a7709d972789278acd2f4cec4e
     ```
 
     If it doesn't, either re-follow the process or fix the breakage in these tests targets.
-    If the `offline_signing_test_{}` tests are failing, you need to update the 'snapshot' signed binary targets, provided nothing else has changed.
-    You can do this by building the relevant `offline_signed_{}` targets and using them to replace the `empty_test_slot_a_fpga_cw310_{}.signed.bin` binaries.
+    If the `offline_signing_*` tests are failing, you need to update the 'snapshot' signed binary targets, provided nothing else has changed.
+    You can do this by building the relevant `offline_signed_*` targets and using them to replace the `empty_test_slot_a_fpga_cw310_{}.signed.bin` binaries.
 
 **TODO: consider converting to a script to generate these artifacts automatically.**
 
