@@ -130,6 +130,27 @@ sh_test(
     ]
 ]
 
+# Legacy SPHINCS+ import-export round-trip testing are handled separately since its
+# commands use a different interface. Only tests the pkcs11-ef SPX module.
+sh_test(
+    name = "spx_import_export_test",
+    srcs = ["spx_import_export_test.sh"],
+    data = [
+        "//hsmtool",
+        "//signing/softhsm",
+        "//signing/softhsm:conf",
+        "@opentitan_devbundle//:opentitantool/opentitantool",
+        "@softhsm2//:gen_dir",
+    ],
+    env = {
+        "OPENTITANTOOL": "$(rootpath @opentitan_devbundle//:opentitantool/opentitantool)",
+        "SOFTHSM2_CONF": "$(rootpath //signing/softhsm:conf)",
+        "HSMTOOL_MODULE": "$(rootpath @softhsm2//:gen_dir)/lib/softhsm/libsofthsm2.so",
+        "HSMTOOL_SPX_MODULE": "pkcs11-ef",
+    },
+    deps = [":test_lib"],
+)
+
 # ECDSA-Sign a digest with opentitantool and then verify the signature with hsmtool.
 sh_test(
     name = "ecdsa_opentitantool_sign_hsmtool_verify_test",
