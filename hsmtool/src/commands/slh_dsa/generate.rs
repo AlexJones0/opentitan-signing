@@ -21,7 +21,8 @@ pub struct Generate {
     id: Option<String>,
     #[arg(short, long)]
     label: Option<String>,
-    #[arg(short, long)]
+    #[arg(short, long, default_value = "sha2-128s")]
+    #[serde(default)]
     parameter_set: SlhDsaParameterSet,
     /// Permit the generated key to be extractable.
     #[arg(long)]
@@ -54,11 +55,21 @@ impl Generate {
 }
 
 #[derive(
-    Clone, Copy, Debug, PartialEq, Eq, Hash, clap::ValueEnum, serde::Serialize, serde::Deserialize,
+    Clone,
+    Copy,
+    Debug,
+    Default,
+    PartialEq,
+    Eq,
+    Hash,
+    clap::ValueEnum,
+    serde::Serialize,
+    serde::Deserialize,
 )]
 // #[value(rename_all = "lower")]
 #[repr(u64)]
 enum SlhDsaParameterSet {
+    #[default]
     #[serde(rename = "CKP_SLH_DSA_SHA2_128S")]
     Sha2_128S = cryptoki_sys::CKP_SLH_DSA_SHA2_128S,
     #[serde(rename = "CKP_SLH_DSA_SHAKE_128S")]
